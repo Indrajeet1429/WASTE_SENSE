@@ -1,0 +1,36 @@
+[project]
+name = "wastesense"
+version = "0.1.0"
+description = "AI-powered intelligent resource waste detection and optimization system"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "xgboost",
+    "sqlalchemy",
+    "psycopg[binary]",
+    "catboost",
+    "pydantic",
+    "python-dotenv",
+    "joblib"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx",
+    "ruff"
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

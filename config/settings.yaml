@@ -1,0 +1,21 @@
+app:
+  name: WASTESENSE
+  environment: development
+  debug: true
+
+server:
+  host: 127.0.0.1
+  port: 8000
+
+database:
+  host: localhost
+  port: 5432
+  name: wastesense
+  user: wastesense_user
+
+ml:
+  model_path: ml/artifacts/models
+  preprocessor_path: ml/artifacts/preprocessors
+
+logging:
+  level: INFO

@@ -1,0 +1,75 @@
+{
+  "experiment": "PDU + active-task-count grouped mean baseline",
+  "split": "Chronological 70/15/15",
+  "bin_counts_tested": [
+    5,
+    10,
+    20
+  ],
+  "results": {
+    "cpu": {
+      "validation_scores": [
+        {
+          "bins": 5,
+          "mae": 0.00704944240320671
+        },
+        {
+          "bins": 10,
+          "mae": 0.00704944240320671
+        },
+        {
+          "bins": 20,
+          "mae": 0.00704944240320671
+        }
+      ],
+      "selected_bins": 5,
+      "workload_baseline_test_metrics": {
+        "mae": 0.00803395558126292,
+        "rmse": 0.015521920839912315,
+        "r2": -0.0094732038748917
+      },
+      "original_model_test_metrics": {
+        "mae": 0.00801616731984153,
+        "rmse": 0.014277531638324735,
+        "r2": 0.1458972323668093
+      },
+      "trainval_global_mean_baseline_test_metrics": {
+        "mae": 0.008033053874534226,
+        "rmse": 0.015521053373855011,
+        "r2": -0.009360375149672251
+      }
+    },
+    "memory": {
+      "validation_scores": [
+        {
+          "bins": 5,
+          "mae": 0.003682978927814323
+        },
+        {
+          "bins": 10,
+          "mae": 0.003682978927814323
+        },
+        {
+          "bins": 20,
+          "mae": 0.003682978927814323
+        }
+      ],
+      "selected_bins": 5,
+      "workload_baseline_test_metrics": {
+        "mae": 0.003827217702365985,
+        "rmse": 0.008034270937500632,
+        "r2": -0.0069049961292864115
+      },
+      "original_model_test_metrics": {
+        "mae": 0.00383156910677939,
+        "rmse": 0.007860993166533393,
+        "r2": 0.03605914654572118
+      },
+      "trainval_global_mean_baseline_test_metrics": {
+        "mae": 0.003824218922471637,
+        "rmse": 0.008031948679616987,
+        "r2": -0.006323000538465573
+      }
+    }
+  }
+}

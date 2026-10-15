@@ -1,0 +1,47 @@
+{
+  "experiment": "ordinary versus log1p target",
+  "selection_data": "chronological validation only",
+  "test_set_used": false,
+  "train_timestamps": 78,
+  "validation_timestamps": 17,
+  "targets": {
+    "actual_cpu": {
+      "mean_baseline": {
+        "mae": 0.007047944076509811,
+        "rmse": 0.014144713665465616,
+        "r2": -0.000888876326414545
+      },
+      "ordinary_target": {
+        "mae": 0.006709452156498583,
+        "rmse": 0.012476414252298642,
+        "r2": 0.22128755729515992,
+        "best_iteration": 123
+      },
+      "log1p_target": {
+        "mae": 0.006671609781327106,
+        "rmse": 0.01246849308637781,
+        "r2": 0.22227603879881852,
+        "best_iteration": 130
+      }
+    },
+    "actual_memory": {
+      "mean_baseline": {
+        "mae": 0.0036837620206631623,
+        "rmse": 0.007351647492406658,
+        "r2": -0.0013529128763065668
+      },
+      "ordinary_target": {
+        "mae": 0.003172090624202872,
+        "rmse": 0.00694679401212724,
+        "r2": 0.10589883932730804,
+        "best_iteration": 433
+      },
+      "log1p_target": {
+        "mae": 0.0031573730593873,
+        "rmse": 0.0069452590600574396,
+        "r2": 0.1062939138905985,
+        "best_iteration": 483
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+# ==============================
+# WASTESENSE - Git Ignore
+# ==============================
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.venv312/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML artifacts
+# Keep trained models and required preprocessors in Git
+# Ignore temporary model outputs and training checkpoints
+*.tmp
+*.temp
+
+# Large datasets
+data/raw/*
+data/interim/*
+data/processed/*
+
+# Keep data directory structure
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+!logs/api/.gitkeep
+!logs/worker/.gitkeep
+!logs/ml/.gitkeep
+
+# Frontend dependencies and builds
+frontend/node_modules/
+frontend/dist/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files and logs
+*.tmp
+*.temp
+*.log
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3

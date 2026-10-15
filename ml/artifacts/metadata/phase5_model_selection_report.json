@@ -1,0 +1,192 @@
+{
+  "phase": "Phase 5 - Expected Resource Modeling",
+  "status": "IN_PROGRESS",
+  "dataset": "data/processed/training/machine_resource_features_final_power_pdu.csv",
+  "split_method": "Chronological 70% train, 15% validation, 15% test",
+  "hardware": "NVIDIA RTX 4050 Laptop GPU using CatBoost GPU training",
+  "model_selection": {
+    "cpu": {
+      "selected_candidate": "expected_resource_cpu.cbm",
+      "test_mae": 0.0080161673,
+      "baseline_test_mae": 0.0080330539,
+      "test_rmse": 0.0142775316,
+      "test_r2": 0.1458972,
+      "decision": "Provisional candidate only. Corrected baseline comparison shows about 0.21% lower MAE and better RMSE/R2, but absolute predictive performance remains weak.",
+      "baseline_test_rmse": 0.01552105,
+      "baseline_test_r2": -0.00936038
+    },
+    "memory": {
+      "selected_candidate": "expected_resource_memory.cbm",
+      "test_mae": 0.0038315691,
+      "baseline_test_mae": 0.0038242189,
+      "test_rmse": 0.0078609932,
+      "test_r2": 0.0360591,
+      "decision": "Provisional candidate only. MAE is about 0.19% worse than the corrected baseline, although RMSE and R2 improve slightly; meaningful predictive improvement is not established.",
+      "baseline_test_rmse": 0.00803195,
+      "baseline_test_r2": -0.006323
+    },
+    "power": {
+      "selected_candidate": "expected_resource_power.cbm",
+      "test_mae": 0.0050330698,
+      "baseline_test_mae": 0.03203393,
+      "test_rmse": 0.006489659,
+      "test_r2": 0.8991268,
+      "test_rows": 85,
+      "decision": "Retain as a candidate for absolute PDU-time power estimation. It substantially beats the corrected PDU-specific mean baseline, but the test set is small and temporal change tracking is not validated.",
+      "baseline_test_rmse": 0.03307821,
+      "baseline_test_r2": -1.62069328
+    }
+  },
+  "log_target_experiments": {
+    "cpu": "Did not improve held-out test MAE over the original model.",
+    "memory": "Only marginally improved held-out test MAE; no meaningful gain established."
+  },
+  "power_temporal_evaluation": {
+    "change_observations": 80,
+    "model_change_mae": 0.0036221,
+    "no_change_baseline_mae": 0.0012875,
+    "decision": "Model performs worse than the no-change baseline for power-change prediction."
+  },
+  "inference_validation": {
+    "machine_time_cpu_memory": "Passed current functional and input-validation tests.",
+    "pdu_time_power": "Passed synthetic and real-data interface tests.",
+    "artifact_loading": "All five local model artifacts loaded and matched expected feature counts."
+  },
+  "limitations": [
+    "CPU and memory predictive performance is weak.",
+    "Power test set contains only 85 PDU-time observations.",
+    "Only 17 held-out timestamps are available per PDU.",
+    "Functional inference tests do not establish predictive accuracy.",
+    "No validated waste score, root-cause analysis, or savings estimate is implemented in this phase."
+  ],
+  "completion_status": {
+    "phase5_complete": false,
+    "phase6_authorized": false,
+    "remaining": [
+      "Review and approve the documented provisional model-selection policy.",
+      "Confirm final regression tests and repository state.",
+      "Finalize Phase 5 acceptance documentation with explicit CPU/memory limitations."
+    ]
+  },
+  "pdu_feature_experiment": {
+    "results_file": "ml\\artifacts\\metadata\\phase5_pdu_feature_experiment.json",
+    "cpu_decision": "Rejected for production selection: MAE improvement is tiny, while RMSE and R2 worsen.",
+    "memory_decision": "Rejected for production selection: improvements across metrics are marginal and do not establish meaningful predictive gain.",
+    "production_models_changed": false,
+    "results": {
+      "cpu": {
+        "best_validation_iteration": 106,
+        "candidate_test_metrics": {
+          "mae": 0.00799336584907631,
+          "rmse": 0.014325555181885823,
+          "r2": 0.1401418925155773
+        },
+        "corrected_trainval_mean_baseline": {
+          "mae": 0.008033053874534226,
+          "rmse": 0.015521053373855011,
+          "r2": -0.009360375149672251
+        },
+        "original_model_test_metrics": {
+          "mae": 0.00801616731984153,
+          "rmse": 0.014277531638324735,
+          "r2": 0.1458972323668093
+        },
+        "candidate_mae_improvement_vs_baseline_percent": 0.49405899770861117,
+        "candidate_mae_improvement_vs_original_percent": 0.28444354833739105,
+        "candidate_model_path": "ml/artifacts/models/expected_resource_cpu_pdu_candidate.cbm"
+      },
+      "memory": {
+        "best_validation_iteration": 500,
+        "candidate_test_metrics": {
+          "mae": 0.003822937398481386,
+          "rmse": 0.007860275943692815,
+          "r2": 0.03623503497182201
+        },
+        "corrected_trainval_mean_baseline": {
+          "mae": 0.003824218922471637,
+          "rmse": 0.008031948679616987,
+          "r2": -0.006323000538465573
+        },
+        "original_model_test_metrics": {
+          "mae": 0.00383156910677939,
+          "rmse": 0.007860993166533393,
+          "r2": 0.03605914654572118
+        },
+        "candidate_mae_improvement_vs_baseline_percent": 0.033510738172457366,
+        "candidate_mae_improvement_vs_original_percent": 0.22527867976415525,
+        "candidate_model_path": "ml/artifacts/models/expected_resource_memory_pdu_candidate.cbm"
+      }
+    }
+  },
+  "workload_baseline_experiment": {
+    "results_file": "ml\\artifacts\\metadata\\phase5_workload_baseline_experiment.json",
+    "decision": "Workload-aware PDU/task-count grouped-mean baseline did not meaningfully improve overall CPU or memory prediction. Existing models remain provisional candidates.",
+    "production_models_changed": false,
+    "results": {
+      "cpu": {
+        "validation_scores": [
+          {
+            "bins": 5,
+            "mae": 0.00704944240320671
+          },
+          {
+            "bins": 10,
+            "mae": 0.00704944240320671
+          },
+          {
+            "bins": 20,
+            "mae": 0.00704944240320671
+          }
+        ],
+        "selected_bins": 5,
+        "workload_baseline_test_metrics": {
+          "mae": 0.00803395558126292,
+          "rmse": 0.015521920839912315,
+          "r2": -0.0094732038748917
+        },
+        "original_model_test_metrics": {
+          "mae": 0.00801616731984153,
+          "rmse": 0.014277531638324735,
+          "r2": 0.1458972323668093
+        },
+        "trainval_global_mean_baseline_test_metrics": {
+          "mae": 0.008033053874534226,
+          "rmse": 0.015521053373855011,
+          "r2": -0.009360375149672251
+        }
+      },
+      "memory": {
+        "validation_scores": [
+          {
+            "bins": 5,
+            "mae": 0.003682978927814323
+          },
+          {
+            "bins": 10,
+            "mae": 0.003682978927814323
+          },
+          {
+            "bins": 20,
+            "mae": 0.003682978927814323
+          }
+        ],
+        "selected_bins": 5,
+        "workload_baseline_test_metrics": {
+          "mae": 0.003827217702365985,
+          "rmse": 0.008034270937500632,
+          "r2": -0.0069049961292864115
+        },
+        "original_model_test_metrics": {
+          "mae": 0.00383156910677939,
+          "rmse": 0.007860993166533393,
+          "r2": 0.03605914654572118
+        },
+        "trainval_global_mean_baseline_test_metrics": {
+          "mae": 0.003824218922471637,
+          "rmse": 0.008031948679616987,
+          "r2": -0.006323000538465573
+        }
+      }
+    }
+  }
+}

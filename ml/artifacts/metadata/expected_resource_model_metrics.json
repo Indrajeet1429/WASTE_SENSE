@@ -1,0 +1,117 @@
+{
+  "dataset": "data\\processed\\training\\machine_resource_features_final_power_pdu.csv",
+  "random_seed": 42,
+  "split_method": "chronological 70% train / 15% validation / 15% test",
+  "gpu": "CatBoost GPU (RTX 4050 verified separately)",
+  "results": {
+    "cpu": {
+      "target": "actual_cpu",
+      "prediction_level": "machine-time",
+      "features": [
+        "active_tasks",
+        "cpu_capacity",
+        "memory_capacity",
+        "avg_priority",
+        "max_priority",
+        "elapsed_minutes",
+        "trace_hour",
+        "day_of_trace",
+        "is_peak_period"
+      ],
+      "categorical_features": [],
+      "best_iteration_on_validation": 123,
+      "final_iterations": 124,
+      "split_rows": {
+        "train": 42697,
+        "validation": 9854,
+        "test": 8963
+      },
+      "test_metrics": {
+        "mae": 0.008016167319841548,
+        "rmse": 0.01427753163832473,
+        "r2": 0.14589723236680985
+      },
+      "mean_baseline_test_metrics": {
+        "mae": 0.00800633975637296,
+        "rmse": 0.015528864285470585,
+        "r2": -0.01037654438657376
+      },
+      "model_path": "ml\\artifacts\\models\\expected_resource_cpu.cbm"
+    },
+    "memory": {
+      "target": "actual_memory",
+      "prediction_level": "machine-time",
+      "features": [
+        "active_tasks",
+        "cpu_capacity",
+        "memory_capacity",
+        "avg_priority",
+        "max_priority",
+        "elapsed_minutes",
+        "trace_hour",
+        "day_of_trace",
+        "is_peak_period"
+      ],
+      "categorical_features": [],
+      "best_iteration_on_validation": 427,
+      "final_iterations": 428,
+      "split_rows": {
+        "train": 42697,
+        "validation": 9854,
+        "test": 8963
+      },
+      "test_metrics": {
+        "mae": 0.0038315691067794034,
+        "rmse": 0.007860993166533391,
+        "r2": 0.03605914654572151
+      },
+      "mean_baseline_test_metrics": {
+        "mae": 0.003836939158523619,
+        "rmse": 0.008028091060281174,
+        "r2": -0.005356590272374451
+      },
+      "model_path": "ml\\artifacts\\models\\expected_resource_memory.cbm"
+    },
+    "power": {
+      "target": "actual_power",
+      "prediction_level": "PDU-time",
+      "features": [
+        "machine_count",
+        "total_active_tasks",
+        "total_cpu_capacity",
+        "total_memory_capacity",
+        "mean_avg_priority",
+        "max_priority",
+        "elapsed_minutes",
+        "trace_hour",
+        "day_of_trace",
+        "is_peak_period",
+        "pdu_pdu10",
+        "pdu_pdu6",
+        "pdu_pdu7",
+        "pdu_pdu8",
+        "pdu_pdu9"
+      ],
+      "categorical_features": [],
+      "best_iteration_on_validation": 250,
+      "final_iterations": 251,
+      "split_rows": {
+        "train": 390,
+        "validation": 85,
+        "test": 85
+      },
+      "test_metrics": {
+        "mae": 0.005033069839617939,
+        "rmse": 0.006489658998616707,
+        "r2": 0.8991267594602811
+      },
+      "mean_baseline_test_metrics": {
+        "mae": 0.03796953242835611,
+        "rmse": 0.043118398136757004,
+        "r2": -3.453048803050333
+      },
+      "model_path": "ml\\artifacts\\models\\expected_resource_power.cbm",
+      "aggregation": "timestamp_us + pdu"
+    }
+  }
+}

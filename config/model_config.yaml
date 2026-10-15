@@ -1,0 +1,31 @@
+expected_resource_model:
+  algorithm: gradient_boosting
+  targets:
+    - cpu
+    - memory
+    - power
+
+anomaly_detection:
+  algorithm: isolation_forest
+  contamination: 0.05
+  random_state: 42
+
+waste_score:
+  thresholds:
+    low: 25
+    medium: 50
+    high: 75
+    critical: 90
+
+persistence:
+  enabled: true
+  minimum_occurrences: 3
+
+evaluation:
+  metrics:
+    - mae
+    - rmse
+    - r2
+    - precision
+    - recall
+    - f1

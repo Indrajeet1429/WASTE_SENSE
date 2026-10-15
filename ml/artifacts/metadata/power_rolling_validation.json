@@ -1,0 +1,100 @@
+{
+  "method": "expanding-window chronological validation",
+  "folds": [
+    {
+      "fold": 1,
+      "train_timestamps": 67,
+      "validation_timestamps": 12,
+      "validation_groups": 60,
+      "model": {
+        "mae": 0.010668613429891565,
+        "rmse": 0.012558127854920997,
+        "r2": 0.6575919712525111
+      },
+      "pdu_mean_baseline": {
+        "mae": 0.022742537313432867,
+        "rmse": 0.026309626223475914,
+        "r2": -0.5028771974930428
+      },
+      "no_change_baseline": {
+        "mae": 0.010983333333333343,
+        "rmse": 0.012864032545564149,
+        "r2": 0.6407072953173257
+      }
+    },
+    {
+      "fold": 2,
+      "train_timestamps": 79,
+      "validation_timestamps": 11,
+      "validation_groups": 55,
+      "model": {
+        "mae": 0.009521321704243258,
+        "rmse": 0.011800330037324258,
+        "r2": 0.7251794765052103
+      },
+      "pdu_mean_baseline": {
+        "mae": 0.02850632911392405,
+        "rmse": 0.031313969256231006,
+        "r2": -0.935250089386519
+      },
+      "no_change_baseline": {
+        "mae": 0.010218181818181828,
+        "rmse": 0.01298950625417583,
+        "r2": 0.6669985372467095
+      }
+    },
+    {
+      "fold": 3,
+      "train_timestamps": 90,
+      "validation_timestamps": 11,
+      "validation_groups": 55,
+      "model": {
+        "mae": 0.022030817158464094,
+        "rmse": 0.022736130074943697,
+        "r2": -0.19146419753213784
+      },
+      "pdu_mean_baseline": {
+        "mae": 0.037014545454545474,
+        "rmse": 0.038128905525704575,
+        "r2": -2.35086232578477
+      },
+      "no_change_baseline": {
+        "mae": 0.014254545454545468,
+        "rmse": 0.014853221260662018,
+        "r2": 0.4915020488649334
+      }
+    },
+    {
+      "fold": 4,
+      "train_timestamps": 101,
+      "validation_timestamps": 11,
+      "validation_groups": 55,
+      "model": {
+        "mae": 0.003858957064037635,
+        "rmse": 0.006008766138752534,
+        "r2": 0.9135010301353557
+      },
+      "pdu_mean_baseline": {
+        "mae": 0.02891053105310531,
+        "rmse": 0.02993933110885769,
+        "r2": -1.1474572095793172
+      },
+      "no_change_baseline": {
+        "mae": 0.0022545454545454566,
+        "rmse": 0.0029418608829354033,
+        "r2": 0.979265928328856
+      }
+    }
+  ],
+  "pooled_model_metrics": {
+    "mae": 0.011501009252286525,
+    "rmse": 0.01453548170342629,
+    "r2": 0.5978802682512977
+  },
+  "pooled_pdu_mean_baseline_metrics": {
+    "mae": 0.02914790910218928,
+    "rmse": 0.031603275281310544,
+    "r2": -0.9009063208388346
+  },
+  "warning": "Small time-series dataset; use results as preliminary evidence."
+}

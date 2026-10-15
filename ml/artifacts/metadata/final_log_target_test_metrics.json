@@ -1,0 +1,65 @@
+{
+  "experiment": "final log1p CPU and memory candidates",
+  "split": "chronological 70/15/15",
+  "test_used_for_selection": false,
+  "targets": {
+    "cpu": {
+      "target": "actual_cpu",
+      "features": [
+        "active_tasks",
+        "cpu_capacity",
+        "memory_capacity",
+        "avg_priority",
+        "max_priority",
+        "elapsed_minutes",
+        "trace_hour",
+        "day_of_trace",
+        "is_peak_period"
+      ],
+      "best_validation_iteration": 130,
+      "final_iterations": 131,
+      "test_metrics": {
+        "mae": 0.008048369716212532,
+        "rmse": 0.014278473358161231,
+        "r2": 0.14578455854265238
+      },
+      "mean_baseline_test_metrics": {
+        "mae": 0.008033053874534226,
+        "rmse": 0.015521053373855011,
+        "r2": -0.009360375149672251
+      },
+      "model_path": "ml\\artifacts\\models\\expected_resource_cpu_log.cbm",
+      "test_rows": 8963,
+      "test_timestamps": 17
+    },
+    "memory": {
+      "target": "actual_memory",
+      "features": [
+        "active_tasks",
+        "cpu_capacity",
+        "memory_capacity",
+        "avg_priority",
+        "max_priority",
+        "elapsed_minutes",
+        "trace_hour",
+        "day_of_trace",
+        "is_peak_period"
+      ],
+      "best_validation_iteration": 483,
+      "final_iterations": 484,
+      "test_metrics": {
+        "mae": 0.0038198143099523792,
+        "rmse": 0.007866295225756006,
+        "r2": 0.03475839612742637
+      },
+      "mean_baseline_test_metrics": {
+        "mae": 0.003824218922471637,
+        "rmse": 0.008031948679616987,
+        "r2": -0.006323000538465573
+      },
+      "model_path": "ml\\artifacts\\models\\expected_resource_memory_log.cbm",
+      "test_rows": 8963,
+      "test_timestamps": 17
+    }
+  }
+}
